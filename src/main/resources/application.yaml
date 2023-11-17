@@ -27,3 +27,11 @@ spring:
           producer:
             # Producer kafka template bean name is not allowed to be empty.
             kafka-template: ds2KafkaTemplate
+        ds3:
+          bootstrap-servers: localhost:9094
+          consumer:
+            container-factory: ds3KafkaListenerContainerFactory
+            auto-offset-reset: earliest
+          producer:
+            # Producer kafka template bean name is not allowed to be empty.
+            kafka-template: ds3KafkaTemplate

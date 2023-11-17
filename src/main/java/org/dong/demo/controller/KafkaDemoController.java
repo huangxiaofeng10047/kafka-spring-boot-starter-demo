@@ -20,10 +20,12 @@ public class KafkaDemoController {
 
     @Resource(name = "ds1KafkaTemplate")
     private KafkaTemplate kafkaTemplate;
+    @Resource(name = "ds3KafkaTemplate")
+    private KafkaTemplate kafkaTemplate2;
 
     @GetMapping("/")
     public void send() {
-        kafkaTemplate.send("test", "hello world!");
+        kafkaTemplate2.send("test", "hello world!");
     }
 
     /**
@@ -31,7 +33,7 @@ public class KafkaDemoController {
      *
      * @param message 参数
      */
-    @KafkaListener(id = "test", topics = "test", containerFactory = "ds1KafkaListenerContainerFactory")
+    @KafkaListener(id = "test", topics = "test", containerFactory = "ds3KafkaListenerContainerFactory")
     public void receive(String message) {
         System.out.println(message);
     }
